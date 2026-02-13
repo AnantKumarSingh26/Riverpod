@@ -19,11 +19,14 @@ class MyApp extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final result = ref.watch(staticStringProvider);
-    final resultInt = ref.watch(intProvider);
+    final resultInt = ref.read(intProvider);
     final resultDouble = ref.watch(doubleProvider);
-    return Scaffold(
-      body: Center(
-        child: Text(result+resultInt.toString()+resultDouble.toString()),
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: Scaffold(
+        body: Center(
+          child: Text(result+resultInt.toString()+resultDouble.toString(),style: const TextStyle(fontSize: 20,fontWeight: FontWeight.bold) ,),
+        ),
       ),
     );
   }
