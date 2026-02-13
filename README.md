@@ -1,16 +1,43 @@
-# flutter_project
+# Learning Riverpod in Flutter
 
-A new Flutter project.
+This project is dedicated to learning and practicing **Riverpod**, a reactive caching and state management framework for Flutter.
+
+## Project Structure
+
+- `lib/main.dart`: Entry point of the application, initializing the `ProviderScope`.
+- `lib/video1.dart`: Introduction to basic `Provider` and `ConsumerWidget`.
+
+## Concepts Learned
+
+### 1. ProviderScope
+The `ProviderScope` widget is used at the root of the Flutter app to store the state of all providers.
+```dart
+void main() {
+  runApp(const ProviderScope(child: MyApp()));
+}
+```
+
+### 2. Provider
+The most basic type of provider, used for providing read-only values (like constants or configurations).
+- `staticStringProvider`: Returns a simple String.
+- `intProvider`: Returns an integer value.
+- `doubleProvider`: Returns a double value.
+
+### 3. ConsumerWidget
+A base class for widgets that need to listen to providers. It provides a `WidgetRef` to access providers.
+```dart
+class MyApp extends ConsumerWidget {
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final value = ref.watch(myProvider);
+    return Text(value);
+  }
+}
+```
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+To run this project:
+1. Ensure you have Flutter installed.
+2. Run `flutter pub get` to install dependencies (specifically `flutter_riverpod`).
+3. Run `flutter run`.
